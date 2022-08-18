@@ -25,3 +25,13 @@ module "securitygroup" {
 
   vpc_id = module.vpc.vpcid
 }
+
+module "ec2" {
+  source = "./modules/ec2"
+  depends_on = [module.vpc,module.securitygroup]
+}
+
+module "s3" {
+  source = "./modules/s3"
+  s3bucketname = var.s3bucketname
+}

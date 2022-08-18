@@ -17,6 +17,9 @@ resource "aws_vpc" "poc-test-vpc" {
  resource "aws_subnet" "poc-test-publicsubnet" { 
     vpc_id =  aws_vpc.poc-test-vpc.id
     cidr_block = "${var.public_subnets}"  
+    tags = {
+      Name = "test-public-subnet"
+    }
  }
 
  output "vpcid" {
